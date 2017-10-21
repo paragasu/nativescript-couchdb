@@ -15,7 +15,7 @@ import { CouchDB } from "nativescript-couchdb";
 
 let db = new CouchDB("https://couchdb.server/dbname");
 let data = {
-  \_id: "hello",
+  _id: "hello",
   name: "world" 
 }
 
