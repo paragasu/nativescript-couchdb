@@ -1,4 +1,4 @@
-export declare class CouchDb {
+export declare class CouchDB {
     private host;
     constructor(databaseHost: string);
     get(id: string): any;
