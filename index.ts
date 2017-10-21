@@ -1,6 +1,6 @@
 import * as http from "http";
 
-export class CouchDb {
+export class CouchDB {
   private host: string;
 
   public constructor(databaseHost: string) {
