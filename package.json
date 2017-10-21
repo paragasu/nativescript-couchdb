@@ -1,6 +1,6 @@
 {
     "name": "nativescript-couchdb",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "description": "Couchdb plugin for nativescript",
     "main": "index.js",
     "typings": "index.d.ts",
@@ -34,12 +34,12 @@
     "homepage": "https://github.com/paragasu/nativescript-couchdb",
     "readmeFilename": "README.md",
     "devDependencies": {
-        "tns-core-modules": "^3.1.0",
-        "tns-platform-declarations": "^3.1.0",
-        "typescript": "~2.3.0",
         "prompt": "^1.0.0",
         "rimraf": "^2.5.0",
-        "tslint": "^5.0.0"
+        "tns-core-modules": "^3.2.0",
+        "tns-platform-declarations": "^3.1.0",
+        "tslint": "^5.0.0",
+        "typescript": "~2.3.0"
     },
     "dependencies": {},
     "bootstrapper": "nativescript-plugin-seed"
