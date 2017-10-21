@@ -3,7 +3,7 @@ nativescript plugin for couchdb
 
 # Install
 ```
-tns install nativescript-couchdb
+tns plugin install nativescript-couchdb
 ```
 
 # Usage
