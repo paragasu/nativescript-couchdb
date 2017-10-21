@@ -14,9 +14,9 @@ export class CouchDB {
         if(response.statusCode === 200){
           resolve(response.content.toJSON());    
         }else{
-          reject(reponse);
+          reject(new Error(reponse));
         }
-      }, err => reject(err));
+      }, err => reject(new Error(err)));
     })
   }
 
@@ -33,9 +33,9 @@ export class CouchDB {
         if(response.statusCode === 201){
           resolve(response.content.toJSON());
         }else{
-          reject(response);
+          reject(new Error(response));
         }
-      }, err => reject(err));
+      }, err => reject(new Error(err)));
     })
   }
 
@@ -52,9 +52,9 @@ export class CouchDB {
         if(response.statusCode === 200){
           resolve(response.content.toJSON());
         }else{
-          reject(response);
+          reject(new Error(response));
         }
-      }, err => reject(err));
+      }, err => reject(new Error(err)));
     })
   }
 }
