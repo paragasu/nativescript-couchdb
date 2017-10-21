@@ -12,20 +12,22 @@ export class CouchDb {
   }
 
   public put(data: Object) {
+    let host = this.host;
     return http.request({
-      url: this.host,
+      url: host,
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       content: JSON.stringify(data)   
-    }.bind(this))
+    })
   }
 
   public remove(data: Object) {
+    let host = this.host;
     return http.request({
-      url: this.host,
+      url: host,
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       content: JSON.stringify(data)   
-    }.bind(this))
+    })
   }
 }
