@@ -8,8 +8,7 @@ export class CouchDb {
   }
 
   public get(id: string) {
-    let url = this.host + "/" + id;
-    return http.getJSON(params);
+    return http.getJSON([this.host, id].join("/"));
   }
 
   public put(data: Object) {
