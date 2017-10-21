@@ -19,15 +19,20 @@ let data = {
   name: "world" 
 }
 
+
 // create and update
 db.put(data)
   .then(res => dialog.alert("saved"))
-  .catch(err => dialog.alert("Failed"))
+  .catch(err => dialog.alert("Failed"));
 
+// get data
+db.get("hello")
+  .then(res => dialog.alert(JSON.stringify(res)))
+  .then(err => dialog.alert("Data not found));
 
 // delete doc
 db.remove(data)
   .then(res => dialog.alert("Data deleted"))
-  .then(err => dialog.alert("Delete failed"))
+  .then(err => dialog.alert("Delete failed"));
 
 ```
