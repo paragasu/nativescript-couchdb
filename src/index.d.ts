@@ -1,5 +1,5 @@
 declare module "nativescript-couchdb" {
-  export class Couchdb {
+  export class CouchDB {
     constructor(databaseHost: string);
     get(id: string);
     put(data: Object);
