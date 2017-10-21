@@ -8,26 +8,32 @@ export class CouchDB {
   }
 
   public get(id: string) {
-    return http.getJSON([this.host, id].join("/"));
+    return new Promise((resolve, reject) => {
+      http.getJSON([this.host, id].join("/")).then(resolve, reject);
+    })
   }
 
   public put(data: Object) {
     let host = this.host;
-    return http.request({
-      url: host,
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      content: JSON.stringify(data)   
+    return new Promise((resolve, reject) => {
+      http.request({
+        url: host,
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        content: JSON.stringify(data)   
+      }).then(resolve, reject);
     })
   }
 
   public remove(data: Object) {
     let host = this.host;
-    return http.request({
-      url: host,
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      content: JSON.stringify(data)   
+    return new Promise((resolve, reject) => {
+      http.request({
+        url: host,
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        content: JSON.stringify(data)   
+      }).then(resolve, reject);
     })
   }
 }
