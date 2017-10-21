@@ -14,7 +14,7 @@ export class CouchDB {
   }
 
   public put(data: Object) {
-    let host = this.host;
+    let host = [this.host, data._id].join("/");
     return new Promise((resolve, reject) => {
       http.request({
         url: host,
@@ -26,7 +26,7 @@ export class CouchDB {
   }
 
   public remove(data: Object) {
-    let host = this.host;
+    let host = [this.host, data._id].join("/");
     return new Promise((resolve, reject) => {
       http.request({
         url: host,
