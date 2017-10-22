@@ -61,10 +61,12 @@ export class CouchDB {
 
   private buildRequestParams(data: Object) {
     let keys = Object.keys(data);
+    let hasQuote = ["startkey", "start_key", "endkey", "end_key"];
     let args: string[] = [];
     keys.forEach(key => {
-      let value = [key, encodeURI(data[key])].join("=");
-      args.push(value);
+      let value = (hasQuote.indexOf(key) != -1) ? '"' + data[key] + '"' : data[key];
+      let item = [key, encodeURI(value)].join("=");
+      args.push(item);
     })
     return "?" + args.join("&");
   }
