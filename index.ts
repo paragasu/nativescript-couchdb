@@ -10,13 +10,10 @@ export class CouchDB {
   public get(id: string) {
     return new Promise((resolve, reject) => {
       let url = [this.host, id].join("/");
-      http.getJSON(url).then(response => {
-        if(response.statusCode === 200){
-          resolve(response.content.toJSON());    
-        }else{
-          reject(new Error(reponse.content));
-        }
-      }, err => reject(new Error(err)));
+      http.getJSON(url).then(
+        res => resolve(res), 
+        err => reject(new Error(res))
+      )
     })
   }
 
@@ -75,13 +72,10 @@ export class CouchDB {
   public allDocs(data: Object) {
     return new Promise((resolve, reject) => {
       let url = [this.host, "_all_docs", this.buildRequestParams(data)].join("/");
-      http.getJSON(url).then(response => {
-        if(response.statusCode === 200){
-          resolve(response.content.toJSON());    
-        }else{
-          reject(new Error(response.content));
-        }
-      }, err => reject(new Error(err)));
+      http.getJSON(url).then(
+        res => resolve(res), 
+        err => reject(new Error(err))
+      )
     })
   }
 }
