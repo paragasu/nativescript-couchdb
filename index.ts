@@ -66,7 +66,7 @@ export class CouchDB {
       let value = [key, encodeURI(data[key])].join("=");
       args.push(value);
     })
-    return "?" + args;
+    return "?" + args.join("&");
   }
 
 
