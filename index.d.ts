@@ -5,5 +5,5 @@ export declare class CouchDB {
     put(data: Object): Promise<{}>;
     remove(data: Object): Promise<{}>;
     private buildRequestParams(data);
-    allDocs(data: Object): void;
+    allDocs(data: Object): Promise<{}>;
 }

@@ -61,7 +61,7 @@ export class CouchDB {
 
   private buildRequestParams(data: Object) {
     let keys = Object.keys(data);
-    let args: string[] = "";
+    let args: string[] = [];
     keys.forEach(key => {
       let value = [key, encodeURI(data[key])].join("=");
       args.push(value);
@@ -71,12 +71,13 @@ export class CouchDB {
 
 
   public allDocs(data: Object) {
-    let url = [this.url, "_all_docs", this.buildRequestParams(data)].join("/");
+    return new Promise((resolve, reject) => {
+      let url = [this.host, "_all_docs", this.buildRequestParams(data)].join("/");
       http.getJSON(url).then(response => {
         if(response.statusCode === 200){
           resolve(response.content.toJSON());    
         }else{
-          reject(new Error(reponse));
+          reject(new Error(response));
         }
       }, err => reject(new Error(err)));
     })
