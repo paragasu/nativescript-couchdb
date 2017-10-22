@@ -4,4 +4,5 @@ export declare class CouchDB {
     get(id: string): Promise<{}>;
     put(data: Object): Promise<{}>;
     remove(data: Object): Promise<{}>;
+    allDocs(data: Object): Promise<{}>;
 }
