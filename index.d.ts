@@ -9,8 +9,8 @@ export interface Data {
 export interface QueryParams {
     startkey?: string;
     endkey?: string;
-    start_key: string;
-    end_key: string;
+    start_key?: string;
+    end_key?: string;
     limit?: number;
 }
 export declare class CouchDB {
