@@ -1,5 +1,22 @@
 import * as http from "http";
 
+export interface Data {
+  _id: string,
+  _rev?: string,
+  updatedAt: string,
+  updatedBy: string,
+  createdAt: string,
+  createdBy: string
+}
+
+export interface QueryParams {
+  startkey?: string,
+  endkey?: string,
+  start_key: string,
+  end_key: string,
+  limit?: number
+}
+
 export class CouchDB {
   private host: string;
 
@@ -12,13 +29,13 @@ export class CouchDB {
       let url = [this.host, id].join("/");
       http.getJSON(url).then(
         res => resolve(res), 
-        err => reject(new Error(res))
+        err => reject(new Error(err))
       )
     })
   }
 
 
-  public put(data: Object) {
+  public put(data: Data) {
     let params = {
       url: [this.host, data._id].join("/"),
       method: "PUT",
@@ -37,7 +54,7 @@ export class CouchDB {
   }
 
 
-  public remove(data: Object) {
+  public remove(data: Data) {
     let params = {
       url: [this.host, data._id].join("/"),
       method: "DELETE",
@@ -56,7 +73,7 @@ export class CouchDB {
   }
 
 
-  private buildRequestParams(data: Object) {
+  private buildRequestParams(data: QueryParams) {
     let keys = Object.keys(data);
     let hasQuote = ["startkey", "start_key", "endkey", "end_key"];
     let args: string[] = [];
@@ -69,7 +86,7 @@ export class CouchDB {
   }
 
 
-  public allDocs(data: Object) {
+  public allDocs(data: QueryParams) {
     return new Promise((resolve, reject) => {
       let url = [this.host, "_all_docs", this.buildRequestParams(data)].join("/");
       http.getJSON(url).then(

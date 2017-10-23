@@ -17,7 +17,11 @@
         "noImplicitAny": false,
         "noImplicitReturns": true,
         "noImplicitUseStrict": false,
-        "noFallthroughCasesInSwitch": true
+        "noFallthroughCasesInSwitch": true,
+        "typeRoots": [
+          "node_modules/@types"
+        ],
+        "types": [ "http" ]
     },
     "exclude": [
         "node_modules"
