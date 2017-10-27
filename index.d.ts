@@ -1,10 +1,7 @@
 export interface Data {
     _id: string;
     _rev?: string;
-    updatedAt?: string;
-    updatedBy?: string;
-    createdAt?: string;
-    createdBy?: string;
+    [x: string]: any;
 }
 export interface QueryParams {
     startkey?: string;

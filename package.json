@@ -1,6 +1,6 @@
 {
     "name": "nativescript-couchdb",
-    "version": "0.6.15",
+    "version": "0.6.16",
     "description": "Couchdb plugin for nativescript",
     "main": "index.js",
     "typings": "index.d.ts",
