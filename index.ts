@@ -119,7 +119,7 @@ export class CouchDB {
    * @return promise
    */
   public query(designView, options) {
-    let [design, view] = views.split("/");  
+    let [design, view] = designView.split("/");  
     let url = [this.host, "_design", design, "_view", view].join("/") + this.buildRequestParams(options);
     return new Promise((resolve, reject) => {
       http.getJSON(url).then(
