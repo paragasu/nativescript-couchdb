@@ -1,5 +1,6 @@
 # nativescript-couchdb
-nativescript plugin for couchdb and implement subset api compatible with pouchdb.
+Nativescript plugin for couchdb
+A simple wrapper using nativescript http api to implement subset api compatible with PouchDB.
 
 # Install
 ```
