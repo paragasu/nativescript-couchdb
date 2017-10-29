@@ -31,4 +31,5 @@ export declare class CouchDB {
     remove(data: Data): Promise<{}>;
     private buildRequestParams(data);
     allDocs(data: QueryParams): Promise<{}>;
+    query(designView: any, options: any): Promise<{}>;
 }

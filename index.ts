@@ -34,6 +34,11 @@ export class CouchDB {
     this.host = databaseHost;
   }
 
+
+  /**
+   * @param string id
+   * @return promise
+   */
   public get(id: string) {
     return new Promise((resolve, reject) => {
       let url = [this.host, id].join("/");
@@ -105,4 +110,22 @@ export class CouchDB {
       )
     })
   }
+
+
+  /**
+   * query design views
+   * @param designView  /_design/user/_view/top_contributor -> user/top_contributor
+   * @param options group_level (int), reduce (boolean)
+   * @return promise
+   */
+  public query(designView, options) {
+    let [design, view] = views.split("/");  
+    let url = [this.host, "_design", design, "_view", view].join("/") + this.buildRequestParams(options);
+    return new Promise((resolve, reject) => {
+      http.getJSON(url).then(
+        res => resolve(res),
+        err => reject(new Error(err))
+      )
+    })
+  } 
 }
