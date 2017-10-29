@@ -9,27 +9,27 @@ tns plugin install nativescript-couchdb
 
 # API
 
-*constructor(couchdb\_url)*
+**constructor(couchdb\_url)**
 Setup the database to connect to
 - url _string_ eg: https://admin:password@localhost:5984
 
-*put(doc)*
+**put(doc)**
 - doc _string_ valid couchdb json doc with \_id key
 - return promise
 
-*get(docId)*
+**get(docId)**
 - docId _string_ document id 
 - return promise
 
-*remove(doc)*
+**remove(doc)**
 - doc _json object_ couchdb json db or json with \_id, \_rev key
 - return promise
 
-*allDocs(options)*
+**allDocs(options)**
 - options _json object_ couchdb params as in http://docs.couchdb.org/en/2.0.0/api/database/bulk-api.html 
 - return promise
 
-*query(design_view)*
+**query(design_view)**
 - design\_view string eg /\_design/design\_name/\_view/view\_name will be _design\_name/view\_name_
 - return promise
 
