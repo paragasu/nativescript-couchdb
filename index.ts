@@ -50,10 +50,13 @@ export class CouchDB {
       headers: this.headers
     }
     return new Promise((resolve, reject) => {
-      http.request(params).then(
-        res => resolve(res), 
-        err => reject(new Error(err))
-      )
+      http.request(params).then(response => {
+        if(response.statusCode === 200){
+          resolve(response.content.toJSON());
+        }else{
+          reject(new Error(response.content));
+        } 
+      }, err => reject(new Error(err)))
     })
   }
 
@@ -116,10 +119,13 @@ export class CouchDB {
       headers: this.headers
     }
     return new Promise((resolve, reject) => {
-      http.request(params).then(
-        res => resolve(res), 
-        err => reject(new Error(err))
-      )
+      http.request(params).then(response => {
+        if(response.statusCode === 200){
+          resolve(response.content.toJSON());
+        }else{
+          reject(new Error(response.content));
+        }
+      }, err => reject(new Error(err)))
     })
   }
 
@@ -138,10 +144,13 @@ export class CouchDB {
       headers: this.headers
     }
     return new Promise((resolve, reject) => {
-      http.request(params).then(
-        res => resolve(res),
-        err => reject(new Error(err))
-      )
+      http.request(params).then(response => {
+        if(response.statusCode === 200){
+          resolve(response.content.toJSON());
+        }else{
+          reject(new Error(response.content));
+        }
+      }, err => reject(new Error(err)))
     })
   } 
 }
