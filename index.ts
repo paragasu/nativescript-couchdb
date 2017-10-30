@@ -29,9 +29,13 @@ export interface QueryParams {
 
 export class CouchDB {
   private host: string;
+  private headers: Object;
 
-  public constructor(databaseHost: string) {
+  public constructor(databaseHost: string, extraHeaders?: Object) {
     this.host = databaseHost;
+    this.headers = Object.assign({
+      "Content-Type": "application/json" 
+    }, extraHeaders || {});
   }
 
 
@@ -40,9 +44,13 @@ export class CouchDB {
    * @return promise
    */
   public get(id: string) {
+    let params = {
+      url: [this.host, id].join("/"),
+      method: "GET",
+      headers: this.headers
+    }
     return new Promise((resolve, reject) => {
-      let url = [this.host, id].join("/");
-      http.getJSON(url).then(
+      http.request(params).then(
         res => resolve(res), 
         err => reject(new Error(err))
       )
@@ -54,7 +62,7 @@ export class CouchDB {
     let params = {
       url: [this.host, data._id].join("/"),
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: this.headers,
       content: JSON.stringify(data)   
     }
     return new Promise((resolve, reject) => {
@@ -73,7 +81,7 @@ export class CouchDB {
     let params = {
       url: [this.host, data._id].join("/"),
       method: "DELETE",
-      headers: { "Content-Type": "application/json" },
+      headers: this.headers,
       content: JSON.stringify(data)   
     }
     return new Promise((resolve, reject) => {
@@ -102,9 +110,13 @@ export class CouchDB {
 
 
   public allDocs(data: QueryParams) {
+    let params = {
+      url: [this.host, "_all_docs", this.buildRequestParams(data)].join("/"),
+      method: "GET",
+      headers: this.headers
+    }
     return new Promise((resolve, reject) => {
-      let url = [this.host, "_all_docs", this.buildRequestParams(data)].join("/");
-      http.getJSON(url).then(
+      http.request(params).then(
         res => resolve(res), 
         err => reject(new Error(err))
       )
@@ -120,9 +132,13 @@ export class CouchDB {
    */
   public query(designView, options) {
     let [design, view] = designView.split("/");  
-    let url = [this.host, "_design", design, "_view", view].join("/") + this.buildRequestParams(options);
+    let params = {
+      url: [this.host, "_design", design, "_view", view].join("/") + this.buildRequestParams(options),
+      method: "GET",
+      headers: this.headers
+    }
     return new Promise((resolve, reject) => {
-      http.getJSON(url).then(
+      http.request(params).then(
         res => resolve(res),
         err => reject(new Error(err))
       )

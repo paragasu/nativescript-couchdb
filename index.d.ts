@@ -25,7 +25,8 @@ export interface QueryParams {
 }
 export declare class CouchDB {
     private host;
-    constructor(databaseHost: string);
+    private headers;
+    constructor(databaseHost: string, extraHeaders?: Object);
     get(id: string): Promise<{}>;
     put(data: Data): Promise<{}>;
     remove(data: Data): Promise<{}>;

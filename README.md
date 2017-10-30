@@ -9,9 +9,9 @@ tns plugin install nativescript-couchdb
 
 # API
 
-**constructor(couchdb\_url)**
+**constructor(couchdb\_url, extraHeaders)**
 Setup the database to connect to
-- url _string_ eg: https://admin:password@localhost:5984
+- url _string_ eg: https://localhost:5984
 
 **put(doc)**
 - doc _string_ valid couchdb json doc with \_id key
@@ -41,7 +41,9 @@ Setup the database to connect to
 import * as dialog from "ui/dialogs";
 import { CouchDB } from "nativescript-couchdb";
 
-let db = new CouchDB("https://couchdb.server/dbname");
+let db = new CouchDB("https://couchdb.server/dbname", {
+  "Authorization": "Basic base64\_encoded\_string"
+});
 let data = {
   _id: "hello",
   name: "world" 
