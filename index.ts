@@ -29,9 +29,9 @@ export interface QueryParams {
 
 export class CouchDB {
   private host: string;
-  private headers: Object;
+  private headers: object;
 
-  public constructor(databaseHost: string, extraHeaders?: Object) {
+  public constructor(databaseHost: string, extraHeaders: object | null) {
     this.host = databaseHost;
     this.headers = Object.assign({
       "Content-Type": "application/json" 
