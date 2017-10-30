@@ -12,6 +12,7 @@ tns plugin install nativescript-couchdb
 **constructor(couchdb\_url, extraHeaders)**
 Setup the database to connect to
 - url _string_ eg: https://localhost:5984
+- extraHeaders Map specify extra map to pass as http header
 
 **put(doc)**
 - doc _string_ valid couchdb json doc with \_id key
