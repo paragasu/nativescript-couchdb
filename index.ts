@@ -21,7 +21,7 @@ export interface QueryParams {
   include_docs?: boolean,
   inclusive_end?: boolean,
   key?: string,
-  keys?: string,
+  keys?: string[],
   skip?: number,
   stale?: string,
   update_req?: boolean
