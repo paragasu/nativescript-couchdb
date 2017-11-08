@@ -104,9 +104,15 @@ export class CouchDB {
     let hasQuote = ["startkey", "start_key", "endkey", "end_key"];
     let args: string[] = [];
     keys.forEach(key => {
-      let value = (hasQuote.indexOf(key) != -1) ? '"' + data[key] + '"' : data[key];
-      let item = [key, encodeURI(value)].join("=");
-      args.push(item);
+      if(key === "keys"){
+        let rows = data["keys"] || [];
+        let keysValue = '[' + rows.map(x => '"' + x + '"') + ']';
+        args.push("keys=" + encodeURI(keysValue));
+      }else{
+        let value = (hasQuote.indexOf(key) != -1) ? '"' + data[key] + '"' : data[key];
+        let item = [key, encodeURI(value)].join("=");
+        args.push(item);
+      }
     })
     return "?" + args.join("&");
   }
