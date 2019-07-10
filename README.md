@@ -59,7 +59,7 @@ db.put(data)
 // get data
 db.get("hello")
   .then(res => dialog.alert(JSON.stringify(res)))
-  .catch(err => dialog.alert("Data not found));
+  .catch(err => dialog.alert("Data not found"));
 
 // delete doc
 db.remove(data)
