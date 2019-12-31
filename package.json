@@ -35,11 +35,11 @@
     "readmeFilename": "README.md",
     "devDependencies": {
         "prompt": "^1.0.0",
-        "rimraf": "^2.5.0",
-        "tns-core-modules": "^3.3.0",
-        "tns-platform-declarations": "^3.3.0",
-        "tslint": "^5.0.0",
-        "typescript": "~2.3.0"
+        "rimraf": "^3.0.0",
+        "tns-core-modules": "^6.3.2",
+        "tns-platform-declarations": "^6.3.2",
+        "tslint": "^5.20.1",
+        "typescript": "^3.7.4"
     },
     "dependencies": {
         "tns-core-modules-declarations": "^2.5.0"
